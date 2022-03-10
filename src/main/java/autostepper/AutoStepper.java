@@ -8,6 +8,8 @@ import ddf.minim.analysis.FFT;
 import ddf.minim.spi.AudioRecordingStream;
 import gnu.trove.list.array.TFloatArrayList;
 import java.io.*;
+import java.lang.reflect.Field;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -66,7 +68,7 @@ public class AutoStepper {
         return false;
     }
 
-    public static void run(String url, String inputLocation, String outputLocation, String[] args) {
+    public static void run(Data songData, String url, String inputLocation, String outputLocation, String[] args) {
         minim = new Minim(myAS);
         String outputDir, input;
         float duration;
@@ -91,7 +93,7 @@ public class AutoStepper {
         UPDATESM = getArg(args, "updatesm", "false").equals("true");
         File inputFile = new File(input);
         if( inputFile.isFile() ) {
-            myAS.analyzeUsingAudioRecordingStream(url, inputFile, duration, outputDir);
+            myAS.analyzeUsingAudioRecordingStream(songData, url, inputFile, duration, outputDir);
         } else if( inputFile.isDirectory() ) {
             System.out.println("Processing directory: " + inputFile.getAbsolutePath());
             File[] allfiles = inputFile.listFiles();
@@ -99,7 +101,7 @@ public class AutoStepper {
                 String extCheck = f.getName().toLowerCase();
                 if( !f.isDirectory() &&
                     (extCheck.endsWith(".mp3") || extCheck.endsWith(".wav")) ) {
-                    myAS.analyzeUsingAudioRecordingStream(url, f, duration, outputDir);
+                    myAS.analyzeUsingAudioRecordingStream(songData, url, f, duration, outputDir);
                 } else {
                     System.out.println("Skipping unsupported file: " + f.getName());
                 }
@@ -259,7 +261,7 @@ public class AutoStepper {
         return BPM;
     }
     
-    void analyzeUsingAudioRecordingStream(String url, File filename, float seconds, String outputDir) {
+    void analyzeUsingAudioRecordingStream(Data songData, String url, File filename, float seconds, String outputDir) {
       int fftSize = 512;
 
       System.out.println("\n[--- Processing " + seconds + "s of "+ filename.getName() + " ---]");
@@ -405,7 +407,7 @@ public class AutoStepper {
       System.out.println("Start Time: " + startTime);
       
       // start making the SM
-      BufferedWriter smfile = SMGenerator.GenerateSM(url, BPM, startTime, filename, outputDir);
+      BufferedWriter smfile = SMGenerator.GenerateSM(songData, url, BPM, startTime, filename, outputDir);
       
       if( HARDMODE ) System.out.println("Hard mode enabled! Extra steps for you! :-O");
       

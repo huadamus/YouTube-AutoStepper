@@ -23,7 +23,7 @@ public class SMGenerator {
     private static String Header = 
             "#TITLE:$TITLE;\n" +
             "#SUBTITLE:;\n" +
-            "#ARTIST:AutoStepper by phr00t.com;\n" +
+            "#ARTIST:$ARTIST;\n" +
             "#TITLETRANSLIT:;\n" +
             "#SUBTITLETRANSLIT:;\n" +
             "#ARTISTTRANSLIT:;\n" +
@@ -108,15 +108,16 @@ public class SMGenerator {
         return new File(dir, filename + ".sm");
     }
     
-    public static BufferedWriter GenerateSM(String url, float BPM, float startTime, File songfile, String outputdir) {
-        String filename = songfile.getName();
-        String songname = filename.replace(".mp3", " ").replace(".wav", " ").replace(".com", " ").replace(".org", " ").replace(".info", " ");
-        String shortName = songname.length() > 30 ? songname.substring(0, 30) : songname;
+    public static BufferedWriter GenerateSM(Data data, String url, float BPM, float startTime, File songfile, String outputdir) {
+        String filename = data.getTitle().replaceAll("[^A-Za-z0-9]", "")+".mp3";
+        String author = data.getAuthor_name();
+        String songname = data.getTitle().replace(".mp3", " ").replace(".wav", " ").replace(".com", " ").replace(".org", " ").replace(".info", " ");
+        //String shortName = songname.length() > 40 ? songname.substring(0, 40) : songname;
         File dir = new File(outputdir, filename + "_dir/");
         dir.mkdirs();
         File smfile = new File(dir, filename + ".sm");
         // get image for sm
-        File imgFile = new File(dir, filename + "_img.png");
+        File imgFile = new File(dir, "img.png");
         String imgFileName = "";
         if(!imgFile.exists()) {
             System.out.println("Attempting to get image for background & banner...");
@@ -131,7 +132,7 @@ public class SMGenerator {
             smfile.delete();
             copyFileUsingStream(songfile, new File(dir, filename));
             BufferedWriter writer = new BufferedWriter(new FileWriter(smfile));
-            writer.write(Header.replace("$TITLE", shortName).replace("$BGIMAGE", imgFileName).replace("$MUSICFILE", filename)
+            writer.write(Header.replace("$TITLE", songname).replace("$ARTIST", author).replace("$BGIMAGE", imgFileName).replace("$MUSICFILE", filename)
                          .replace("$STARTTIME", Float.toString(startTime + AutoStepper.STARTSYNC)).replace("$BPM", Float.toString(BPM)));
             return writer;
         } catch(Exception e) {}

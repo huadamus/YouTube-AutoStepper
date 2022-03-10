@@ -26,7 +26,7 @@ dependencies {
     implementation("org.jsoup:jsoup:1.14.3")
     implementation("com.googlecode.soundlibs:tritonus-share:0.3.7.4")
     implementation("com.googlecode.soundlibs:mp3spi:1.9.5.4")
-
+    implementation("com.google.code.gson:gson:2.9.0")
 }
 
 tasks.test {
