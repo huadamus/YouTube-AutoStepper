@@ -154,9 +154,9 @@ abstract class JSBaseAudioRecordingStream implements Runnable,
                     {
                         readBytes();
                     }
-                    // convert them to floating point
+                    // autostepper.convert them to floating point
                     // hand those arrays to our effect
-                    // and convert back to bytes
+                    // and autostepper.convert back to bytes
                     process();
                 }
                 // write to the line.
@@ -407,7 +407,7 @@ abstract class JSBaseAudioRecordingStream implements Runnable,
             {
                 effect.process( buffer.getChannel( 0 ), buffer.getChannel( 1 ) );
             }
-            // finally convert them back to bytes
+            // finally autostepper.convert them back to bytes
             buffer.convertToByteArray( rawBytes, 0, format );
         }
     }
@@ -704,7 +704,7 @@ abstract class JSBaseAudioRecordingStream implements Runnable,
         {
             bytesRead = readBytes();
         }
-        // convert them to floating point
+        // autostepper.convert them to floating point
         int frameCount = bytesRead / format.getFrameSize();
         synchronized ( buffer )
         {

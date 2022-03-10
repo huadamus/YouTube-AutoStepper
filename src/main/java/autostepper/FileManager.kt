@@ -1,4 +1,10 @@
+package autostepper
+
 import java.io.File
+import java.io.IOException
+
+import java.nio.file.Files
+import java.nio.file.Path
 
 
 object FileManager {
@@ -22,8 +28,13 @@ object FileManager {
         val files = File(INPUT_DIRECTORY).listFiles()
         for (f in files) {
             if (!f.isDirectory) {
-                val newFile = File(INPUT_DIRECTORY + getAdjustedFilename(f.name))
-                f.renameTo(newFile)
+                //val newFile = File(INPUT_DIRECTORY + getAdjustedFilename(f.name))
+                val source: Path = f.toPath()
+                try {
+                    Files.move(source, source.resolveSibling(INPUT_DIRECTORY + "f.mp3"))
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
             }
         }
     }

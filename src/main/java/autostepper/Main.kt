@@ -1,6 +1,7 @@
+package autostepper
+
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import autostepper.AutoStepper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,9 +22,9 @@ fun download(url: String, progressListener: ProgressListener) {
             FileManager.prepareDirectories()
             FileManager.clearDirectories()
             YoutubeDownloader.download(url, progressListener)
-            FileManager.adjustFilenames()
+            //FileManager.adjustFilenames()
             progressListener.onSuccess()
-            convert()
+            convert(url)
             FileManager.clearDirectories()
         } catch (e: Exception) {
             progressListener.onError(e.toString())
@@ -31,6 +32,6 @@ fun download(url: String, progressListener: ProgressListener) {
     }
 }
 
-fun convert() {
-    AutoStepper.run(INPUT_DIRECTORY, OUTPUT_DIRECTORY, arrayOf())
+fun convert(url: String) {
+    AutoStepper.run(url, INPUT_DIRECTORY, OUTPUT_DIRECTORY, arrayOf())
 }

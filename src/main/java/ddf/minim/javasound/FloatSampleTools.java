@@ -300,12 +300,12 @@ public class FloatSampleTools {
 	}
 
 	/**
-	 * Conversion function to convert an interleaved byte array to a List of
+	 * Conversion function to autostepper.convert an interleaved byte array to a List of
 	 * interleaved float arrays. The float arrays will contain normalized
 	 * samples in the range [-1.0, +1.0]. The input array provides bytes in the
 	 * format specified in <code>format</code>.
 	 * <p>
-	 * Only PCM formats are accepted. The method will convert all byte values
+	 * Only PCM formats are accepted. The method will autostepper.convert all byte values
 	 * from <code>input[inByteOffset]</code> to
 	 * <code>input[inByteOffset + (frameCount * format.getFrameSize()) - 1]</code>
 	 * to floats from <code>output(n)[outOffset]</code> to
@@ -356,12 +356,12 @@ public class FloatSampleTools {
 	}
 
 	/**
-	 * Conversion function to convert one audio channel in an interleaved byte
+	 * Conversion function to autostepper.convert one audio channel in an interleaved byte
 	 * array to a float array. The float array will contain normalized samples
 	 * in the range [-1.0, +1.0]. The input array provides bytes in the format
 	 * specified in <code>format</code>.
 	 * <p>
-	 * Only PCM formats are accepted. The method will convert all byte values
+	 * Only PCM formats are accepted. The method will autostepper.convert all byte values
 	 * from <code>input[inByteOffset]</code> to
 	 * <code>input[inByteOffset + (frameCount * format.getFrameSize()) - 1]</code>
 	 * to floats from <code>output(n)[outOffset]</code> to
@@ -394,12 +394,12 @@ public class FloatSampleTools {
 	}
 
 	/**
-	 * Conversion function to convert an interleaved byte array to an
+	 * Conversion function to autostepper.convert an interleaved byte array to an
 	 * interleaved float array. The float array will contain normalized samples
 	 * in the range [-1.0f, +1.0f]. The input array provides bytes in the format
 	 * specified in <code>format</code>.
 	 * <p>
-	 * Only PCM formats are accepted. The method will convert all byte values
+	 * Only PCM formats are accepted. The method will autostepper.convert all byte values
 	 * from <code>input[inByteOffset]</code> to
 	 * <code>input[inByteOffset + (frameCount * format.getFrameSize()) - 1]</code>
 	 * to floats from <code>output[outOffset]</code> to
@@ -424,9 +424,9 @@ public class FloatSampleTools {
 	}
 
 	/**
-	 * Generic conversion function to convert a byte array to a float array.
+	 * Generic conversion function to autostepper.convert a byte array to a float array.
 	 * <p>
-	 * Only PCM formats are accepted. The method will convert all bytes from
+	 * Only PCM formats are accepted. The method will autostepper.convert all bytes from
 	 * <code>input[inByteOffset]</code> to
 	 * <code>input[inByteOffset + (sampleCount * (inByteStep - 1)]</code> to
 	 * samples from <code>output[outOffset]</code> to
@@ -461,7 +461,7 @@ public class FloatSampleTools {
 	 * Central conversion function from a byte array to a normalized float
 	 * array. In order to accomodate interleaved and non-interleaved samples,
 	 * this method takes inByteStep as parameter which can be used to flexibly
-	 * convert the data.
+	 * autostepper.convert the data.
 	 * <p>
 	 * E.g.:<br>
 	 * mono->mono: inByteStep=format.getFrameSize()<br>
@@ -601,7 +601,7 @@ public class FloatSampleTools {
 	}
 
 	/**
-	 * Conversion function to convert a non-interleaved float audio data to an
+	 * Conversion function to autostepper.convert a non-interleaved float audio data to an
 	 * interleaved byte array. The float arrays contains normalized samples in
 	 * the range [-1.0f, +1.0f]. The output array will receive bytes in the
 	 * format specified in <code>format</code>. Exactly
@@ -610,7 +610,7 @@ public class FloatSampleTools {
 	 * does not provide enough channels, an <code>IllegalArgumentException</code>
 	 * is thrown.
 	 * <p>
-	 * Only PCM formats are accepted. The method will convert all samples from
+	 * Only PCM formats are accepted. The method will autostepper.convert all samples from
 	 * <code>input(n)[inOffset]</code> to
 	 * <code>input(n)[inOffset + frameCount - 1]</code> to byte values from
 	 * <code>output[outByteOffset]</code> to
@@ -688,12 +688,12 @@ public class FloatSampleTools {
 	}
 
 	/**
-	 * Conversion function to convert an interleaved float array to an
+	 * Conversion function to autostepper.convert an interleaved float array to an
 	 * interleaved byte array. The float array contains normalized samples in
 	 * the range [-1.0f, +1.0f]. The output array will receive bytes in the
 	 * format specified in <code>format</code>.
 	 * <p>
-	 * Only PCM formats are accepted. The method will convert all samples from
+	 * Only PCM formats are accepted. The method will autostepper.convert all samples from
 	 * <code>input[inOffset]</code> to
 	 * <code>input[inOffset + (frameCount * format.getChannels()) - 1]</code>
 	 * to byte values from <code>output[outByteOffset]</code> to
@@ -729,9 +729,9 @@ public class FloatSampleTools {
 	}
 
 	/**
-	 * Generic conversion function to convert a float array to a byte array.
+	 * Generic conversion function to autostepper.convert a float array to a byte array.
 	 * <p>
-	 * Only PCM formats are accepted. The method will convert all samples from
+	 * Only PCM formats are accepted. The method will autostepper.convert all samples from
 	 * <code>input[inOffset]</code> to
 	 * <code>input[inOffset+sampleCount-1]</code> to byte values from
 	 * <code>output[outByteOffset]</code> to
@@ -766,7 +766,7 @@ public class FloatSampleTools {
 	 * Central conversion function from normalized float array to a byte array.
 	 * In order to accomodate interleaved and non-interleaved samples, this
 	 * method takes outByteStep as parameter which can be used to flexibly
-	 * convert the data.
+	 * autostepper.convert the data.
 	 * <p>
 	 * E.g.:<br>
 	 * mono->mono: outByteStep=format.getFrameSize()<br>

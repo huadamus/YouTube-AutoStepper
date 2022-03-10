@@ -15,7 +15,7 @@ import ddf.minim.Minim;
  * allows you to think in terms of other representations, such as note name.
  * 
  * This class is generally used by an <code>Oscil</code> UGen, but
- * can also be used to convert different notations of frequencies
+ * can also be used to autostepper.convert different notations of frequencies
  * such as Hz, MIDI note number, and a pitch name (English or solfege).
  * 
  * @example Synthesis/frequencyExample
@@ -187,7 +187,7 @@ public class Frequency
 	 * Construct a Frequency from a pitch name, such as A4 or Bb2.
 	 * 
 	 * @param pitchName 
-	 * 		String: the name of the pitch to convert to a Frequency.
+	 * 		String: the name of the pitch to autostepper.convert to a Frequency.
 	 * 
 	 * @return a new Frequency object
 	 * 

@@ -743,7 +743,7 @@ public class JSMinim implements MinimServiceProvider
 	 * from the package javazoom.jlgui.basicplayer
 	 * 
 	 * @param is
-	 *           The stream to convert to an AudioInputStream
+	 *           The stream to autostepper.convert to an AudioInputStream
 	 * @return an AudioInputStream that will read from is
 	 * @throws UnsupportedAudioFileException
 	 * @throws IOException
@@ -771,7 +771,7 @@ public class JSMinim implements MinimServiceProvider
 	 * and originally comes from the package javazoom.jlgui.basicplayer
 	 * 
 	 * @param targetFormat
-	 *           the AudioFormat to convert the stream to
+	 *           the AudioFormat to autostepper.convert the stream to
 	 * @param sourceStream
 	 *           the stream containing the unconverted audio
 	 * @return an AudioInputStream in the target format

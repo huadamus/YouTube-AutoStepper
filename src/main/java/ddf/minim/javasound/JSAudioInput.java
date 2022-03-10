@@ -64,7 +64,7 @@ final class JSAudioInput extends Thread
     {
       // read from the line
       line.read(rawBytes, 0, rawBytes.length);
-      // convert to float samples
+      // autostepper.convert to float samples
       buffer.setSamplesFromBytes(rawBytes, 0, line.getFormat(), 
                                  0, buffer.getSampleCount());
       // apply effects, if any, and broadcast the result
@@ -167,7 +167,7 @@ final class JSAudioInput extends Thread
 		byte[] bytes = new byte[ convert.getByteArrayBufferSize(line.getFormat()) ];
 		// read the bytes
 		line.read(bytes, 0, bytes.length);
-		// convert the bytes
+		// autostepper.convert the bytes
 		convert.setSamplesFromBytes(bytes, 0, line.getFormat(), 0, numSamples);
 		// copy the converted floats into the MultiChannelBuffer
 		// make sure it has the correct number of channels first
